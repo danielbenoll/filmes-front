@@ -1,0 +1,16 @@
+1 - Criar um novo projeto chamado filmes (npx create-react-app filmes)
+2 - Instalar o react-bootstrap (npm i react-bootstrap bootstrap)
+3 - Instalar o react-router-dom (npm i react-router-dom)
+4 - Criar uma conta no site themoviedb.org
+5 - Após criar a conta, gerem uma API_KEY no site, pelo caminho: Perfil -> Configurações -> API
+6 - Criar uma estrutura de cabeçalho parecida com a que fizemos em sala com os menus (Todos com Dropdown):
+	Gêneros
+	Filmes
+		Populares
+		Lançamentos
+	Séries
+		Populares
+		Lançamentos	
+	Atores
+		Populares
+		Lançamentos	
