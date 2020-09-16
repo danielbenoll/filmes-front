@@ -1,3 +1,6 @@
+Instalar NodeJs (nodejs.org/en)
+Instalar o Git (git-scm.com)
+
 1 - Criar um novo projeto chamado filmes (npx create-react-app filmes)
 2 - Instalar o react-bootstrap (npm i react-bootstrap bootstrap)
 3 - Instalar o react-router-dom (npm i react-router-dom)
@@ -14,3 +17,64 @@
 	Atores
 		Populares
 		Lançamentos	
+
+//Inicia um projeto
+npm start
+
+
+=========================================================
+		CRIANDO NOVO COMPONENTE
+=========================================================
+
+import React from 'react';
+
+export default() => {
+    return(
+        <>
+             <h1>Componente Cabeçalho</h1>
+             <p>Testar memso pow</p>
+        </>
+    )
+}
+
+=========================================================
+		    REACT BOOSTRAP
+=========================================================
+
+https://github.com/react-bootstrap/react-router-bootstrap
+
+<LinkContainer to="/home">
+    <Nav.Link eventKey={1}>Home</Nav.Link>
+</LinkContainer>
+
+react-bootstrap.github.io/components/alerts
+npm install react-bootstrap bootstrap
+
+=========================================================
+		    REACT ROUTER DOM
+=========================================================
+
+npm i react-router-dom
+
+=========================================================
+		        FAZENDO LOOP NO REACT
+=========================================================
+
+{carros.map(item => (
+    <li>{item}</li>
+))}
+
+=========================================================
+		        Instalando o Axios
+=========================================================
+
+requisições http (consumir API REST)
+npm i axios
+
+=========================================================
+		        Fetch Api Get
+=========================================================
+
+apiFilmes.get('movie/popular').then(results => {
+    console.log(results.data.results)
+})
