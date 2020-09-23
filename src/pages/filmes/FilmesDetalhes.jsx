@@ -49,20 +49,21 @@ export default(props) => {
                         <p><strong>Popularidade:</strong> {filme.popularity}</p>
                         <Row>
                             {filme.production_companies.map(item => (
-                                <Col key={item.id}>
+                                <React.Fragment key="item.id">
                                     {item.logo_path && 
-                                        <OverlayTrigger
-                                            key={item.id}
-                                            placement="auto"
-                                            overlay={<Tooltip id={'tooltip_'+item.id} >{item.name}</Tooltip>}
-                                        >
-                                            <Card className="mb-3">
-                                                <Card.Img variant="top" src={'http://image.tmdb.org/t/p/w500'+item.logo_path}/>
-                                            </Card>
-                                        </OverlayTrigger>
+                                        <Col md={2}>
+                                            <OverlayTrigger
+                                                key={item.id}
+                                                placement="auto"
+                                                overlay={<Tooltip id={'tooltip_'+item.id} >{item.name}</Tooltip>}
+                                            >
+                                                <Card className="mb-3">
+                                                    <Card.Img variant="top" src={'http://image.tmdb.org/t/p/w500'+item.logo_path}/>
+                                                </Card>
+                                            </OverlayTrigger>
+                                        </Col>
                                     }
-                                </Col>
-                                
+                                </React.Fragment>
                             ))}
                         </Row>
                     </Col>
