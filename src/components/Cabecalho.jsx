@@ -17,6 +17,7 @@ export default (props) => {
                         <NavDropdown title="Filmes" id="basic-nav-dropdown">
                             <NavDropdown.Item><Link to="/filmes/populares">Populares</Link></NavDropdown.Item>
                             <NavDropdown.Item><Link to="/filmes/lancamentos">Lançamentos</Link></NavDropdown.Item>
+                            <NavDropdown.Item><Link to="/filmes/bem-avaliados">Bem Avaliados</Link></NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Séries" id="basic-nav-dropdown">
                             <NavDropdown.Item><Link to="/series/populares">Populares</Link></NavDropdown.Item>

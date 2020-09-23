@@ -13,7 +13,7 @@ export default() => {
     //Toda vez que carregar o componente ele executa isso
     useEffect(()=>{
 
-        apiFilmes.get('movie/popular?language=pt-BR').then(results => {
+        apiFilmes.get('movie/top_rated?language=pt-BR').then(results => {
             setFilmes(results.data.results)
             console.log(results.data.results)
         })  
@@ -21,7 +21,7 @@ export default() => {
     }, [])
 
     return (
-        <Pagina titulo="Filmes Populares">
+        <Pagina titulo="Filmes Mais avaliados">
             <Row>
                 {filmes.map(item => (
                     <Col key={item.id} xs={3} className="mb-3">
@@ -30,9 +30,9 @@ export default() => {
                                 Pontuação: {item.vote_average}
                             </Row>
                             <Row>
-                                <Link to={"/filmes/" + item.id}>
-                                    <Button variant="primary">Saiba mais</Button>
-                                </Link>
+                            <Link to={"/filmes/" + item.id}>
+                                <Button variant="primary">Saiba mais</Button>
+                            </Link>
                             </Row>
                         </Cartao>
                     </Col>

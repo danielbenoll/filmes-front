@@ -78,3 +78,13 @@ npm i axios
 apiFilmes.get('movie/popular').then(results => {
     console.log(results.data.results)
 })
+
+=========================================================
+		        React Hooks
+=========================================================
+
+const [filmes, setFilmes] = useState()
+
+useEffect(()=>{
+
+}, [])
