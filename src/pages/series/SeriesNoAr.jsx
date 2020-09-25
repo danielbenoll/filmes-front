@@ -7,23 +7,23 @@ import apiFilmes from '../../services/apiFilmes';
 export default() => {
 
 
-    const [filmes, setFilmes] = useState([])
+    const [series, setSeries] = useState([])
 
     //Toda vez que carregar o componente ele executa isso
     useEffect(()=>{
 
-        apiFilmes.get('movie/now_playing?language=pt-BR').then(results => {
-            setFilmes(results.data.results)
+        apiFilmes.get('tv/on_the_air?language=pt-BR').then(results => {
+            setSeries(results.data.results)
         })  
         
     }, [])
 
     return (
-        <Pagina titulo="Filmes Lançamentos">
+        <Pagina titulo="Séries de TV no Ar">
             <Row>
-                {filmes.map(item => (
+                {series.map(item => (
                     <Col key={item.id} xs={6} md={4}>
-                        <Link to={"/filmes/" + item.id}><Image src={'http://image.tmdb.org/t/p/w500'+ item.poster_path} thumbnail /></Link>
+                        <Link to={"/series/" + item.id}><Image src={'http://image.tmdb.org/t/p/w500'+ item.poster_path} thumbnail /></Link>
                     </Col>
                 ))}
             </Row>

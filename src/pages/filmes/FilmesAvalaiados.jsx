@@ -26,14 +26,14 @@ export default() => {
                 {filmes.map(item => (
                     <Col key={item.id} xs={3} className="mb-3">
                         <Cartao  titulo={item.title} foto={'http://image.tmdb.org/t/p/w500'+ item.backdrop_path}>
-                            <Row>
+                            <Col>
                                 Pontuação: {item.vote_average}
-                            </Row>
-                            <Row>
+                            </Col>
+                            <Col>
                             <Link to={"/filmes/" + item.id}>
                                 <Button variant="primary">Saiba mais</Button>
                             </Link>
-                            </Row>
+                            </Col>
                         </Cartao>
                     </Col>
                 ))}

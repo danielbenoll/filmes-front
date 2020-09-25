@@ -1,10 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Cabecalho from './components/Cabecalho';
+import AtoresDetalhes from './pages/atores/AtoresDetalhes';
 import FilmesAvalaiados from './pages/filmes/FilmesAvalaiados';
 import FilmesDetalhes from './pages/filmes/FilmesDetalhes';
 import FilmesLancamentos from './pages/filmes/FilmesLancamentos';
 import FilmesPopulares from './pages/filmes/FilmesPopulares';
+import SeriesAvalaiados from './pages/series/SeriesAvalaiados';
+import SeriesDetalhes from './pages/series/SeriesDetalhes';
+import SeriesNoAr from './pages/series/SeriesNoAr';
+import SeriesPopulares from './pages/series/SeriesPopulares';
 
 export default() => {
     return(
@@ -18,6 +23,11 @@ export default() => {
                     <Route exact path="/filmes/lancamentos" component={FilmesLancamentos}/>
                     <Route exact path="/filmes/bem-avaliados" component={FilmesAvalaiados}/>
                     <Route exact path="/filmes/:id" component={FilmesDetalhes}/>
+                    <Route exact path="/atores/:id" component={AtoresDetalhes}/>
+                    <Route exact path="/series/populares" component={SeriesPopulares}/>
+                    <Route exact path="/series/no-ar" component={SeriesNoAr}/>
+                    <Route exact path="/series/bem-avaliados" component={SeriesAvalaiados}/>
+                    <Route exact path="/series/:id" component={SeriesDetalhes}/>
                 </Switch>
             </BrowserRouter>
         </>

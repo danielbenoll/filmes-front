@@ -88,3 +88,9 @@ const [filmes, setFilmes] = useState()
 useEffect(()=>{
 
 }, [])
+
+=========================================================
+		        Const ID
+=========================================================
+
+const id = props.match.params.id

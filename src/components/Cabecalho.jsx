@@ -1,11 +1,9 @@
 import React from 'react';
 import "./Cabecalho.css"
-import { Navbar, Nav, NavDropdown, Jumbotron, Button } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export default (props) => {
-
-    console.log(props)
 
     return (
         <>
@@ -21,7 +19,8 @@ export default (props) => {
                         </NavDropdown>
                         <NavDropdown title="Séries" id="basic-nav-dropdown">
                             <NavDropdown.Item><Link to="/series/populares">Populares</Link></NavDropdown.Item>
-                            <NavDropdown.Item><Link to="/series/lancamentos">Lançamentos</Link></NavDropdown.Item>
+                            <NavDropdown.Item><Link to="/series/no-ar">No Ar</Link></NavDropdown.Item>
+                            <NavDropdown.Item><Link to="/series/bem-avaliados">Bem Avaliados</Link></NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Atores" id="basic-nav-dropdown">
                             <NavDropdown.Item><Link to="/atores/populares">Populares</Link></NavDropdown.Item>

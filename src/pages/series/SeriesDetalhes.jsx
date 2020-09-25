@@ -8,50 +8,50 @@ import apiFilmes from '../../services/apiFilmes';
 export default(props) => {
 
     
-    const [filme, setFilmes] = useState({})
+    const [serie, setSeries] = useState({})
     const [atores, setAtores] = useState([])
-    const [contraCapas, setContraCapas] = useState([])
-    const [posters, setPosters] = useState([])
 
     //Toda vez que carregar o componente ele executa isso
     useEffect(()=>{
         const id = props.match.params.id
 
-        apiFilmes.get('movie/'+ id +'?language=pt-BR').then(results => {
-            setFilmes(results.data)
+        apiFilmes.get('tv/'+ id +'?language=pt-BR').then(results => {
+            setSeries(results.data)
         }) 
         
-        apiFilmes.get('movie/'+ id +'/credits?language=pt-BR').then(results => {
+        apiFilmes.get('tv/'+ id +'/credits?language=pt-BR').then(results => {
             setAtores(results.data.cast)
-        }) 
-        apiFilmes.get('movie/'+ id +'/images?language=en').then(results => {
-            setPosters(results.data.posters)
-            setContraCapas(results.data.backdrops)
         }) 
         
     }, [props])
 
     return (
-        <Pagina titulo={filme?.title}>
-            {filme.id &&
+        <Pagina titulo={serie?.name}>
+            {serie.id &&
                 <Row>
                     <Col xs={6} md={4}>
-                        <Image src={'http://image.tmdb.org/t/p/w500'+ filme?.poster_path} thumbnail />
+                        <Image src={'http://image.tmdb.org/t/p/w500'+ serie?.poster_path} thumbnail />
                     </Col>
                     <Col xs={6} md={6}>
 
-                        <p>{filme.overview}</p>
-                        <p><strong>Data Lançamento:</strong> {filme.release_date}</p>
-                        <p><strong>Orçamento:</strong> {filme.budget}</p>
+                        <p>{serie.overview}</p>
+                        <p><strong>Data de Estréia:</strong> {serie.first_air_date}</p>
+                        
+                        {serie.status === "Ended" &&
+                            <p><strong>Data de Fim:</strong> {serie.last_air_date}</p>
+                        }
+                        <p><strong>Data do Último Episódio:</strong> {serie.last_episode_to_air.air_date}</p>
+                        <p><strong>Situação:</strong> {serie.status}</p>
+                        <p><strong>Nota:</strong> {serie.vote_average}</p>
                         <p><strong>Gêneros:</strong> 
-                        {filme.genres.map(item => (
+                        {serie.genres.map(item => (
                             <span key={item.id}>{item.name}, </span>
                         ))}
                         </p>
-                        <p><strong>Linguagem:</strong> {filme.original_language}</p>
-                        <p><strong>Popularidade:</strong> {filme.popularity}</p>
+                        <p><strong>Linguagem:</strong> {serie.original_language}</p>
+                        <p><strong>Popularidade:</strong> {serie.popularity}</p>
                         <Row>
-                            {filme.production_companies.map(item => (
+                            {serie.production_companies.map(item => (
                                 <React.Fragment key="item.id">
                                     {item.logo_path && 
                                         <Col md={2}>
@@ -88,36 +88,6 @@ export default(props) => {
                                                     </Card.Body>
                                                 </Card>
                                             </Link>
-                                        </Col>
-                                    }
-                                </React.Fragment>
-                            ))}
-                        </Row>
-                    </Col>
-                    <Col md={12}>
-                        <hr/>
-                        <h1>Contra Capas</h1>
-                        <Row>
-                            {contraCapas.map(item => (
-                                <React.Fragment key="item.id">
-                                    {
-                                        <Col md={6} className="mb-3">
-                                            <Card.Img variant="top" src={'http://image.tmdb.org/t/p/w500'+ item?.file_path} thumbnail />
-                                        </Col>
-                                    }
-                                </React.Fragment>
-                            ))}
-                        </Row>
-                    </Col>
-                    <Col md={12}>
-                        <hr/>
-                        <h1>Posteres</h1>
-                        <Row>
-                            {posters.map(item => (
-                                <React.Fragment key="item.id">
-                                    {
-                                        <Col md={2} className="mb-3">
-                                            <Image src={'http://image.tmdb.org/t/p/w500'+ item?.file_path} thumbnail />
                                         </Col>
                                     }
                                 </React.Fragment>
