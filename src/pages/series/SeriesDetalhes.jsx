@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {Card, Col, Image, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Capas from '../../components/Capas';
+import Cartao from '../../components/Cartao';
 import Pagina from '../../components/Pagina';
 import apiFilmes from '../../services/apiFilmes';
 
@@ -52,7 +54,7 @@ export default(props) => {
                         <p><strong>Popularidade:</strong> {serie.popularity}</p>
                         <Row>
                             {serie.production_companies.map(item => (
-                                <React.Fragment key="item.id">
+                                <React.Fragment key={"serie"+item.id}>
                                     {item.logo_path && 
                                         <Col md={2}>
                                             <OverlayTrigger
@@ -75,24 +77,7 @@ export default(props) => {
                     <Col md={12}>
                         <hr/>
                         <h1>Principais Atores</h1>
-                        <Row>
-                            {atores.map(item => (
-                                <React.Fragment key="item.id">
-                                    {item.profile_path &&
-                                        <Col md={2} className="mb-3">
-                                            <Link to={"/atores/"+item.id}>
-                                                <Card className="mb-3">
-                                                    <Card.Img variant="top" src={'http://image.tmdb.org/t/p/w500'+item.profile_path}/>
-                                                    <Card.Body>
-                                                        <p>{item.character}({item.name})</p>
-                                                    </Card.Body>
-                                                </Card>
-                                            </Link>
-                                        </Col>
-                                    }
-                                </React.Fragment>
-                            ))}
-                        </Row>
+                        <Cartao lista={atores} link='atores' foto='profile_path'/>
                     </Col>
                 </Row>
             }

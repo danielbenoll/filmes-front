@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {Card, Col, Image, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Capas from '../../components/Capas';
+import Cartao from '../../components/Cartao';
 import Pagina from '../../components/Pagina';
+import Slide from '../../components/Slide';
 import apiFilmes from '../../services/apiFilmes';
 
 
@@ -30,7 +33,7 @@ export default(props) => {
         }) 
         
     }, [props])
-
+    console.log(contraCapas)
     return (
         <Pagina titulo={filme?.title}>
             {filme.id &&
@@ -50,80 +53,25 @@ export default(props) => {
                         </p>
                         <p><strong>Linguagem:</strong> {filme.original_language}</p>
                         <p><strong>Popularidade:</strong> {filme.popularity}</p>
-                        <Row>
-                            {filme.production_companies.map(item => (
-                                <React.Fragment key="item.id">
-                                    {item.logo_path && 
-                                        <Col md={2}>
-                                            <OverlayTrigger
-                                                key={item.id}
-                                                placement="auto"
-                                                overlay={<Tooltip id={'tooltip_'+item.id} >{item.name}</Tooltip>}
-                                            >   
-                                                
-                                                <Card className="mb-3">
-                                                    <Card.Img variant="top" src={'http://image.tmdb.org/t/p/w500'+item.logo_path}/>
-                                                </Card>
-                                                
-                                            </OverlayTrigger>
-                                        </Col>
-                                    }
-                                </React.Fragment>
-                            ))}
-                        </Row>
+                        <Capas lista={filme.production_companies} foto="logo_path" link=''/>
                     </Col>
                     <Col md={12}>
                         <hr/>
                         <h1>Principais Atores</h1>
-                        <Row>
-                            {atores.map(item => (
-                                <React.Fragment key="item.id">
-                                    {item.profile_path &&
-                                        <Col md={2} className="mb-3">
-                                            <Link to={"/atores/"+item.id}>
-                                                <Card className="mb-3">
-                                                    <Card.Img variant="top" src={'http://image.tmdb.org/t/p/w500'+item.profile_path}/>
-                                                    <Card.Body>
-                                                        <p>{item.character}({item.name})</p>
-                                                    </Card.Body>
-                                                </Card>
-                                            </Link>
-                                        </Col>
-                                    }
-                                </React.Fragment>
-                            ))}
-                        </Row>
+                        <Slide lista={atores} link='atores' foto='profile_path'/>
                     </Col>
-                    <Col md={12}>
-                        <hr/>
-                        <h1>Contra Capas</h1>
-                        <Row>
-                            {contraCapas.map(item => (
-                                <React.Fragment key="item.id">
-                                    {
-                                        <Col md={6} className="mb-3">
-                                            <Card.Img variant="top" src={'http://image.tmdb.org/t/p/w500'+ item?.file_path} thumbnail />
-                                        </Col>
-                                    }
-                                </React.Fragment>
-                            ))}
-                        </Row>
-                    </Col>
-                    <Col md={12}>
-                        <hr/>
-                        <h1>Posteres</h1>
-                        <Row>
-                            {posters.map(item => (
-                                <React.Fragment key="item.id">
-                                    {
-                                        <Col md={2} className="mb-3">
-                                            <Image src={'http://image.tmdb.org/t/p/w500'+ item?.file_path} thumbnail />
-                                        </Col>
-                                    }
-                                </React.Fragment>
-                            ))}
-                        </Row>
-                    </Col>
+                    {!contraCapas.length==0 &&
+                        <div className="mb-5">
+                            <hr/>
+                            <h1>Contra Capas</h1>
+                            <Slide lista={contraCapas} foto='file_path'/>
+                        </div>
+                    }{!posters.length==0 &&
+                        <div className="mb-5">
+                            <h1>Posteres</h1>
+                            <Slide lista={posters} foto='file_path'/>
+                        </div>
+                    }
                 </Row>
             }
         </Pagina>

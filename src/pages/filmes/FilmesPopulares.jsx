@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Capas from '../../components/Capas';
 import Cartao from '../../components/Cartao';
+import Cover from '../../components/Cover';
 import Pagina from '../../components/Pagina';
 import apiFilmes from '../../services/apiFilmes';
 
@@ -21,22 +23,7 @@ export default() => {
 
     return (
         <Pagina titulo="Filmes Populares">
-            <Row>
-                {filmes.map(item => (
-                    <Col key={item.id} xs={3} className="mb-3">
-                        <Cartao  titulo={item.title} foto={'http://image.tmdb.org/t/p/w500'+ item.backdrop_path}>
-                            <Col>
-                                Pontuação: {item.vote_average}
-                            </Col>
-                            <Col>
-                                <Link to={"/filmes/" + item.id}>
-                                    <Button variant="primary">Saiba mais</Button>
-                                </Link>
-                            </Col>
-                        </Cartao>
-                    </Col>
-                ))}
-            </Row>
+            <Capas lista={filmes} link="filmes" qtd={3}/>
         </Pagina>
       )
 }

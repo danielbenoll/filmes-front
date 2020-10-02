@@ -1,18 +1,32 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-export default(props) => {
+export default({lista = [], link = 'filmes', qtd = 2}) => {
     return(
         <>
-            <Card className="mb-3">
-                <Card.Img variant="top" src={props.foto}  style={{objectFit: 'cover', height: '200px'}}/>
-                <Card.Body>
-                    <Card.Title>{props.titulo}</Card.Title>
-                    <Card.Text>
-                        {props.children}
-                    </Card.Text>
-                </Card.Body>
-            </Card>
+
+            <Row>
+                {lista.map(item => (
+                    <React.Fragment key={"serie"+item.id}>
+                        {item.profile_path &&
+                            <Col md={qtd} className="mb-3">
+                                <Link to={`/${link}/${item.id}`}>
+                                    <Card className="mb-3">
+                                        <Card.Img variant="top" src={'http://image.tmdb.org/t/p/w500'+item.profile_path}/>
+                                        <Card.Body>
+                                            <p>{item.character}({item.name})</p>
+                                        </Card.Body>
+                                    </Card>
+                                </Link>
+                            </Col>
+                        }
+                    </React.Fragment>
+                ))}
+            </Row>
+
+
+            
         </>
     )
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Image, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Capas from '../../components/Capas';
 import Pagina from '../../components/Pagina';
 import apiFilmes from '../../services/apiFilmes';
 
@@ -43,35 +44,11 @@ export default(props) => {
                     </Col>
                     <Col md={12}>
                         <h1>Filmes em que atuou</h1>
-                        <Row>
-                            {filmes.map(item => (
-                                <React.Fragment key={item.id}>
-                                    {item.poster_path &&
-                                        <Col md={3}>
-                                            <Link to={`/filmes/${item.id}`}>
-                                                <Image src={'http://image.tmdb.org/t/p/w500'+ item?.poster_path} thumbnail />
-                                            </Link>
-                                        </Col>
-                                    }
-                                </React.Fragment>
-                            ))}
-                        </Row>
+                        <Capas lista={filmes} qtd={3} foto='poster_path' link='filmes'/>
                     </Col>
                     <Col md={12}>
                         <h1>Séries de TV em que atuou</h1>
-                        <Row>
-                            {series.map(item => (
-                                <React.Fragment key={item.id}>
-                                    {item.poster_path &&
-                                        <Col md={3}>
-                                            <Link to={`/series/${item.id}`}>
-                                                <Image src={'http://image.tmdb.org/t/p/w500'+ item?.poster_path} thumbnail />
-                                            </Link>
-                                        </Col>
-                                    }
-                                </React.Fragment>
-                            ))}
-                        </Row>
+                        <Capas lista={series} qtd={3} foto='poster_path' link='series'/>
                     </Col>
                 </Row>
             }

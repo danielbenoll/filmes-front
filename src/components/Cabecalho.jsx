@@ -8,7 +8,7 @@ export default (props) => {
     return (
         <>
             <Navbar bg="dark" variant="dark" expand="lg">
-                <Navbar.Brand href="#home">Sistema Acadêmico</Navbar.Brand>
+                <Navbar.Brand href="#home"><Link to="/">Filmes</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">

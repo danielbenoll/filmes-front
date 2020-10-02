@@ -6,6 +6,7 @@ import FilmesAvalaiados from './pages/filmes/FilmesAvalaiados';
 import FilmesDetalhes from './pages/filmes/FilmesDetalhes';
 import FilmesLancamentos from './pages/filmes/FilmesLancamentos';
 import FilmesPopulares from './pages/filmes/FilmesPopulares';
+import Home from './pages/Home';
 import SeriesAvalaiados from './pages/series/SeriesAvalaiados';
 import SeriesDetalhes from './pages/series/SeriesDetalhes';
 import SeriesNoAr from './pages/series/SeriesNoAr';
@@ -18,7 +19,7 @@ export default() => {
                 <Cabecalho/>
                 <Switch>
 
-                    <Route exact path="/" component={FilmesPopulares}/>
+                    <Route exact path="/" component={Home}/>
                     <Route exact path="/filmes/populares" component={FilmesPopulares}/>
                     <Route exact path="/filmes/lancamentos" component={FilmesLancamentos}/>
                     <Route exact path="/filmes/bem-avaliados" component={FilmesAvalaiados}/>
