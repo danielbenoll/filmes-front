@@ -3,6 +3,7 @@ import {Card, Col, Image, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Capas from '../../components/Capas';
 import Cartao from '../../components/Cartao';
+import Cover from '../../components/Cover';
 import Pagina from '../../components/Pagina';
 import Slide from '../../components/Slide';
 import apiFilmes from '../../services/apiFilmes';
@@ -33,7 +34,7 @@ export default(props) => {
         }) 
         
     }, [props])
-    console.log(contraCapas)
+    console.log(atores)
     return (
         <Pagina titulo={filme?.title}>
             {filme.id &&
@@ -58,18 +59,18 @@ export default(props) => {
                     <Col md={12}>
                         <hr/>
                         <h1>Principais Atores</h1>
-                        <Slide lista={atores} link='atores' foto='profile_path'/>
+                        <Cartao lista={atores} link='atores' foto='profile_path'/>
                     </Col>
                     {!contraCapas.length==0 &&
                         <div className="mb-5">
                             <hr/>
                             <h1>Contra Capas</h1>
-                            <Slide lista={contraCapas} foto='file_path'/>
+                            <Capas lista={contraCapas} foto='file_path'/>
                         </div>
                     }{!posters.length==0 &&
                         <div className="mb-5">
                             <h1>Posteres</h1>
-                            <Slide lista={posters} foto='file_path'/>
+                            <Capas lista={posters} foto='file_path'/>
                         </div>
                     }
                 </Row>

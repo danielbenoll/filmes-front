@@ -16,12 +16,12 @@ export default(props) => {
         slidesToScroll: 3,
         ...props
     };
-
     return(
         <>
             <Slider {...settings}>
                 {lista.map(item => (
                     <React.Fragment key={`filme${item.id}`}>
+                        {console.log(item.name +' - '+item.id)}
                         <Card>
                             <Link to={`/${props.link}/ ${item.id}`}><Card.Img variant="top" src={'http://image.tmdb.org/t/p/w400'+ item[foto]} thumbnail /></Link>
                         </Card>

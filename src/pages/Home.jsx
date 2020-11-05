@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, Col, Image, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
+import Capas from '../components/Capas';
 import Pagina from '../components/Pagina';
 import Slide from '../components/Slide';
 import apiFilmes from '../services/apiFilmes';
@@ -35,10 +36,9 @@ export default() => {
         
     }, [])
 
-    console.log(atores)
+    // console.log(atores)
     return(
-        <Pagina>
-            
+        <Pagina titulo="Pagina Inicial">
             <div className="mb-5">
                 <h2>Filmes <small><Link to="/filmes/populares">Ver mais</Link></small></h2>
                 <Slide lista={filmes} link='filmes' />

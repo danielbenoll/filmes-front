@@ -1,34 +1,61 @@
-import React, {useEffect, useState} from 'react';
-import { Button, Col, Image, Row } from 'react-bootstrap';
+import React from 'react';
+import { Col, Row, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Cartao from '../components/Cartao';
 
+export default ({ lista = [], link = true, qtd = 2, foto = '' }) => {
 
-export default({lista = [], link = 'filmes', qtd = 2, nome, foto = 'poster_path'}) => {
+  const card = (foto) => (
+    <Card>
+      <Card.Img variant="top" src={"http://image.tmdb.org/t/p/w500" + foto} />
+    </Card>
+  )
 
-    const card= (foto) =>(
-        <Image src={'http://image.tmdb.org/t/p/w500'+ foto} thumbnail />
-    )
-    
+  const exibirCard = (item) => {
+
+    let imagem
+
+    if (foto) {
+      imagem = foto
+    } else {
+      imagem = item.media_type == 'person' ? 'profile_path' : 'poster_path'
+    }
+
+    let href = 'filmes'
+
+    if(item.media_type == 'person'){
+        href = 'atores'
+    } else if (item.media_type == 'tv'){
+        href = 'series'
+    }
+
     return (
-        <Row>
-            {lista.map(item => (
-                <React.Fragment key={item.id}>
-                    {item[foto] &&
-                        <Col key={item.id} md={qtd} className="mb-3">
-                            {link && 
-                                <Link to={`/${link}/${item.id}`}>
-                                    {card(item[foto])}
-                                </Link>
-                            }
-                            {!link &&
-                                card(item[foto])
-                            }
-                            {item[`${nome}`]}
-                        </Col>
-                    }
-                </React.Fragment>
-            ))}
-        </Row>
-      )
+      <>
+        {
+          item[imagem] &&
+          <Col md={qtd} key={item.id} className="mb-3">
+            {link &&
+              <Link to={`/${href}/${item.id}`}>
+                {card(item[imagem])}
+              </Link>
+            }
+            {!link &&
+              card(item[imagem])
+            }
+          </Col>
+        }
+      </>
+    )
+  }
+
+  return (
+    <>
+      <Row>
+        {lista.map(item => (
+          <React.Fragment key={item.id}>
+            {exibirCard(item)}
+          </React.Fragment>
+        ))}
+      </Row>
+    </>
+  )
 }
