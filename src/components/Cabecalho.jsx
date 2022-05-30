@@ -32,17 +32,17 @@ export default () => {
                             <NavDropdown.Item><Link to="/filmes/populares">Populares</Link></NavDropdown.Item>
                             <NavDropdown.Item><Link to="/filmes/lancamentos">Lançamentos</Link></NavDropdown.Item>
                             <NavDropdown.Item><Link to="/filmes/bem-avaliados">Bem Avaliados</Link></NavDropdown.Item>
-                            <NavDropdown.Item><Link to="/filmes/busca">Busca Filmes</Link></NavDropdown.Item>
+                            {/* <NavDropdown.Item><Link to="/filmes/busca">Busca Filmes</Link></NavDropdown.Item> */}
                         </NavDropdown>
                         <NavDropdown title="Séries" id="basic-nav-dropdown">
                             <NavDropdown.Item><Link to="/series/populares">Populares</Link></NavDropdown.Item>
                             <NavDropdown.Item><Link to="/series/no-ar">No Ar</Link></NavDropdown.Item>
                             <NavDropdown.Item><Link to="/series/bem-avaliados">Bem Avaliados</Link></NavDropdown.Item>
                         </NavDropdown>
-                        <NavDropdown title="Atores" id="basic-nav-dropdown">
+                        {/* <NavDropdown title="Atores" id="basic-nav-dropdown">
                             <NavDropdown.Item><Link to="/atores/populares">Populares</Link></NavDropdown.Item>
                             <NavDropdown.Item><Link to="/atores/lancamentos">Novos</Link></NavDropdown.Item>
-                        </NavDropdown>
+                        </NavDropdown> */}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

@@ -20,13 +20,17 @@ export default ({ lista = [], link = true, qtd = 2, foto = '' }) => {
       imagem = item.media_type == 'person' ? 'profile_path' : 'poster_path'
     }
 
-    let href = 'filmes'
+    let href = link;
 
-    if(item.media_type == 'person'){
-        href = 'atores'
-    } else if (item.media_type == 'tv'){
-        href = 'series'
-    }
+    //// Código comentado fazia com que quando clicasse numa série ele levasse pra um filme
+
+    // let href = 'filmes'
+
+    // if(item.media_type == 'person'){
+    //     href = 'atores'
+    // } else if (item.media_type == 'tv'){
+    //     href = 'series'
+    // }
 
     return (
       <>

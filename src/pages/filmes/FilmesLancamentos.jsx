@@ -21,7 +21,7 @@ export default() => {
 
     return (
         <Pagina titulo="Filmes Lançamentos">
-            <Capas lista={filmes} tipo={"filmes"}/>
+            <Capas lista={filmes} link={"filmes"}/>
         </Pagina>
       )
 }
